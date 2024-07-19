@@ -20,6 +20,7 @@ public class RPS
     static Link myNodes = new Link();
     static String prevResult;
 
+    //sets rock, paper and scissors as linked nodes
     static void setNodes()
     {
         Node rock = myNodes.createNode("rock");
@@ -31,15 +32,15 @@ public class RPS
         myNodes.linkNextNode(scissors, paper);
     }
 
-    static String systemChooseRandom()
+    static void systemChooseRandom()
     {
         ArrayList<String> options = new ArrayList<>(Arrays.asList("rock", "paper", "scissors"));
         Collections.shuffle(options);
 
-        return options.get(0);
+        systemChoice = options.get(0);
     }
 
-    static String pickAChoice()
+    static void pickAChoice()
     {
         String[] options = {"Rock", "Paper", "Scissors"};
 
@@ -58,9 +59,8 @@ public class RPS
         {
             System.exit(0);
         }
-        String playerChoice = options[playerChoiceIndex].toLowerCase();
 
-        return playerChoice;
+        playerChoice = options[playerChoiceIndex].toLowerCase();
     }
 
     static void showResult(boolean firstInstance)
@@ -199,9 +199,9 @@ public class RPS
 
     static void play()
     {
-        playerChoice = pickAChoice();
+        pickAChoice();
 
-        systemChoice = systemChooseRandom();
+        systemChooseRandom();
 
         showResult(true);
     }
